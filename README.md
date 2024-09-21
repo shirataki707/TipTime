@@ -2,8 +2,8 @@
 [Intro to state in Compose](https://developer.android.com/codelabs/basic-android-kotlin-compose-using-state?hl=ja&continue=https://developer.android.com/courses/pathways/android-basics-compose-unit-2-pathway-3?hl%3Dja%23codelab-https://developer.android.com/codelabs/basic-android-kotlin-compose-using-state#11)
 
 # Practice Branch
-starter
-state
+- starter
+- state
 
 # Official README
 
