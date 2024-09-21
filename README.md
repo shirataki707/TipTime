@@ -1,24 +1,18 @@
-Tip Time - Solution Code
-=================================
+# Codelab
+[Calculate a custom tip](https://developer.android.com/codelabs/basic-android-kotlin-compose-calculate-tip?hl=ja&continue=https://developer.android.com/courses/pathways/android-basics-compose-unit-2-pathway-3?hl%3Dja%23codelab-https://developer.android.com/codelabs/basic-android-kotlin-compose-calculate-tip#9)
 
-Solution code for the [Android Basics with Compose](https://developer.android.com/courses/android-basics-compose/course): Tip Time app.
+# Learned
+- keyboardOptions
+  ```
+  keyboardOptions = KeyboardOptions.Default.copy(
+    keyboardType = KeyboardType.Number,
+    imeAction = ImeAction.Next
+  )
 
+- `modifier.verticalScroll(rememberScrollState())`
+- `kotlin.math.ceil`
+  
 
-Introduction
-------------
-The Tip Time app contains various UI elements for calculating a tip,
-teaching about user input, and State in Compose.
+# Screenshot
+<img src="https://github.com/user-attachments/assets/95a133e8-0b3e-4fa8-87ed-ded3f283633f" width=300>
 
-
-Pre-requisites
---------------
-* Experience with Kotlin syntax.
-* How to create and run a project in Android Studio.
-
-
-Getting Started
----------------
-1. Install Android Studio, if you don't already have it.
-2. Download the sample.
-3. Import the sample into Android Studio.
-4. Build and run the sample.
