@@ -4,7 +4,74 @@
 # Practice Branch
 - starter
 - state
+- main
 
+# Summary about Tests
+- 自動テストの概要
+- 自動テストが重要である理由
+- ローカルテストとインストルメンテーション テストの違い
+- 自動テストの作成に関する基本的なベスト プラクティス
+- Android プロジェクト内でローカルテストとインストルメンテーション テストのクラスが配置される場所と配置すべき場所
+- テストメソッドを作成する方法
+- ローカルテストとインストルメンテーション テストのクラスを作成する方法
+- ローカルテストとインストルメンテーション テストでアサーションを作成する方法
+- テストルールを使用する方法
+- ComposeTestRule を使用してテストでアプリを起動する方法
+- インストルメンテーション テストでコンポーザブルを操作する方法
+- テストを実行する方法
+
+# Memo about Tests
+- 単体テストはメソッド単位のテスト、インストルメンテーションテストはUIのテスト
+- private -> internalにするが、@VisibleForTestingでテスト目的でパブリックにしていることを明示する
+- アプリコードが main > java > com > example > tiptime パッケージに作成されている場合、ローカルテストは test > java
+- instrumentation testはandroidTest、local(unit) testはtest[unitTest]
+- assetsは色々ある（assertEquals()、assertNotEquals()、assertTrue()、assertFalse()、assertNull()、assertNotNull()、assertThat()）
+- composeはonNodeWithTextでノードにアクセスできる
+- 詳細は別のCodeLabでやるが、テストを書く癖をつけよう
+
+# Example
+- Unit Test
+  ```
+  class TipCalculatorTests {
+
+    @Test
+    fun calculateTip_20PercentNoRoundup() {
+        val amount = 10.00
+        val tipPercent = 20.00
+        val expectedTip = NumberFormat.getCurrencyInstance().format(2)
+        val actualTip = calculateTip(
+            amount = amount,
+            tipPercent = tipPercent,
+            roundUp = false
+        )
+
+        assertEquals(expectedTip, actualTip)
+    }
+  }
+- Instrumentation Test
+  ```
+  class TipUITests {
+  
+      @get:Rule
+      val composeTestRule = createComposeRule()
+  
+      @Test
+      fun calculate_20_percent_tip() {
+          composeTestRule.setContent {
+              TipTimeTheme {
+                  TipTimeLayout()
+              }
+          }
+          composeTestRule.onNodeWithText("Bill Amount").performTextInput("10")
+          composeTestRule.onNodeWithText("Tip Percentage").performTextInput("20")
+          val expectedTip = NumberFormat.getCurrencyInstance().format(2)
+          
+          composeTestRule.onNodeWithText("Tip Amount: $expectedTip").assertExists(
+              "No node with this text was found."
+          )
+      }
+  }
+  ```
 # Official README
 
 Tip Time - Solution Code
